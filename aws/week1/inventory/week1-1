@@ -1,0 +1,6 @@
+[week1-1]
+localhost
+
+[week1-1:vars]
+bucket_name=www.cloudpatterns.info
+
