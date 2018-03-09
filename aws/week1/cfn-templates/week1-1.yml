@@ -28,3 +28,10 @@ Resources:
                   - !Ref BucketName
                   - "/*"
                 Principal: "*"
+  myDNSRecord:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      HostedZoneId: Z3BB8QM0XV5BIY
+      Name: www.huzhi.info.
+      Type: A
+      AliasTarget: !GetAtt S3Buckets.DomainName
