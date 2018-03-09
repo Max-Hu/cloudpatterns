@@ -14,6 +14,8 @@ Resources:
     Properties:
       Bucket: !Ref BucketName
       PolicyDocument:
+        Version: "2008-10-17"
+        Id: "MyFunAssetsBucketPolicy"
         Statement:
           -
             Action:
