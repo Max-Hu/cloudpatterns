@@ -17,26 +17,26 @@ Resources:
     Properties:
       Bucket: !Ref BucketName
       PolicyDocument:
-        Version: "2008-10-17"
-        Id: "MyFunAssetsBucketPolicy"
+        Id: MyPolicy
         Statement:
-          -
-            Action:
-                - "s3:GetObject"
-            Effect: "Allow"
-            Resource:
-                Fn::Join:
-                  - ""
-                  -
-                  - "arn:aws:s3:::"
-                  -
-                  - !Ref BucketName
-                  - "/*"
-                Principal: "*"
+        - Action:
+          - s3:GetObject
+          Effect: Allow
+          Principal: "*"
+          Resource:
+            Fn::Join:
+            - ''
+            - - 'arn:aws:s3:::'
+              - Ref: BucketName
+              - /*
+          Sid: ReadAccess
+        Version: '2008-10-17'
   myDNSRecord:
     Type: AWS::Route53::RecordSet
     Properties:
       HostedZoneId: Z3BB8QM0XV5BIY
-      Name: www.huzhi.info.
+      Name: !Ref BucketName
       Type: A
-      AliasTarget: !GetAtt S3Bucket.DomainName
+      AliasTarget:
+        DNSName: s3-website-ap-southeast-1.amazonaws.com
+        HostedZoneId: Z3O0J2DXBE1FTB
