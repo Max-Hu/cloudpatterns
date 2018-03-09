@@ -10,3 +10,21 @@ Resources:
     Type: "AWS::S3::Bucket"
     Properties:
       BucketName: !Ref BucketName
+    Type: "AWS::S3::BucketPolicy"
+    Properties:
+      Bucket: !Ref BucketName
+      PolicyDocument:
+        Statement:
+          -
+            Action:
+                - "s3:GetObject"
+            Effect: "Allow"
+            Resource:
+                Fn::Join:
+                  - ""
+                  -
+                  - "arn:aws:s3:::"
+                  -
+                  - !Ref BucketName
+                  - "/*"
+                Principal: "*"
