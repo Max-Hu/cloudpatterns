@@ -6,10 +6,13 @@ Parameters:
     Description: "Bucket Name"
 
 Resources:
-  S3Buckets:
+  S3Bucket:
     Type: "AWS::S3::Bucket"
     Properties:
       BucketName: !Ref BucketName
+      WebsiteConfiguration:
+        IndexDocument: index.html
+  S3BucketPolicy:
     Type: "AWS::S3::BucketPolicy"
     Properties:
       Bucket: !Ref BucketName
@@ -36,4 +39,4 @@ Resources:
       HostedZoneId: Z3BB8QM0XV5BIY
       Name: www.huzhi.info.
       Type: A
-      AliasTarget: !GetAtt S3Buckets.DomainName
+      AliasTarget: !GetAtt S3Bucket.DomainName
