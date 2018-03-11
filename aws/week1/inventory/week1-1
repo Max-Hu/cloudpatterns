@@ -4,3 +4,10 @@ localhost
 [week1-1:vars]
 bucket_name=www.huzhi.info
 
+[week1-2]
+localhost
+
+[week1-2:vars]
+full_domain_name=max.huzhi.info
+acm_certificate_arn=arn:aws:acm:us-east-1:198197790034:certificate/f03c10a6-d34b-4099-bc29-aa1eedb3a1dd
+
